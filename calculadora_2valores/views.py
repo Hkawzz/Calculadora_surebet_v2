@@ -1,4 +1,4 @@
 from django.shortcuts import render
 
 def inicio(request):
-    return render(request, 'calc_2valores.html')
+    return render(request, 'calculadora_2valores/index.html')
