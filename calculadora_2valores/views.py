@@ -3,6 +3,7 @@ from django.shortcuts import render
 def calc2(request):
     if request.method == "POST":
         erro = None
+        tem_surebet = "Sim"
         try:
             odd1 = float(request.POST.get("odd1").replace(",", "."))
             odd2 = float(request.POST.get("odd2").replace(",", "."))
@@ -13,11 +14,13 @@ def calc2(request):
             
             else:
                 resultado = "Tem SureBet, pode apostar"
+                tem_surebet = "Sim"
 
         except:
             erro = "ERRO: Insira números válidos"
             resultado = None
+            tem_surebet = None
         
-        return render(request, 'calculadora_2valores/index.html', {"resultado": resultado, "erro": erro })
+        return render(request, 'calculadora_2valores/index.html', {"resultado": resultado, "erro": erro, "tem_surebet":tem_surebet})
     
     return render(request, "calculadora_2valores/index.html")

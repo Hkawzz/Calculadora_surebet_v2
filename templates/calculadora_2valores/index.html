@@ -16,11 +16,11 @@
         <form method="post" class="formulario">
             {% csrf_token %}
             <div>
-                <input type="text" name="odd1" placeholder="Ex: 1,75" class="info">
-                <input type="text" name="odd2" placeholder="Ex: 2,10" class="info">
+                <input type="text" name="odd1" placeholder="Ex: 1,75" class="info" required>
+                <input type="text" name="odd2" placeholder="Ex: 2,10" class="info" required>
             </div>
             <div>
-                <button type="submit" id="calcular">Calcular</button>
+                <button type="submit" class="calcular">Calcular</button>
             </div>
         </form>
 
@@ -32,16 +32,18 @@
             <p id="resultado">{{ resultado }}</p>
         {% endif %}
 
-        <!--
         {% if tem_surebet %}
-            <form method="post">
+            <h3>Quanto tem para apostar?</h3>
+            <form method="post" class="formulario_valor">
                 {% csrf_token %}
-                <h3>Quanto tem para apostar?</h3>
-                <input type="text" name="valor_total" placeholder="Valor total">
-                <button>Calcular</button>
+                <div>
+                    <input type="text" name="valor_total" placeholder="Valor total" class="info">
+                </div>
+                <div>
+                    <button class="calcular">Calcular</button>
+                </div>
             </form>
         {% endif %}
-        -->
     </main>
     <div class="inicio">
         <a href="{% url 'inicio' %}" class="botao">INICIO</a>
