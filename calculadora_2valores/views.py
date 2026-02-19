@@ -8,7 +8,7 @@ def calc2(request):
             odd2 = float(request.POST.get("odd2").replace(",", "."))
             surebet  = (1 / odd1) + (1 / odd2)
 
-            if surebet < 1:
+            if surebet > 1:
                 resultado = "Sem SureBet, não aposte"
             
             else:

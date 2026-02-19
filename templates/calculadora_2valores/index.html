@@ -12,19 +12,24 @@
         <h1>Calculadora De 2 Odd</h1>
     </header>
     <main>
+        <h2>Digite as ODD</h2>
         <form method="post" class="formulario">
             {% csrf_token %}
-            <input type="text" name="odd1" placeholder="Ex: 1,75">
-            <input type="text" name="odd2" placeholder="Ex: 2,10">
-            <button type="submit">Calcular</button>
+            <div>
+                <input type="text" name="odd1" placeholder="Ex: 1,75" class="info">
+                <input type="text" name="odd2" placeholder="Ex: 2,10" class="info">
+            </div>
+            <div>
+                <button type="submit" id="calcular">Calcular</button>
+            </div>
         </form>
 
         {% if erro %}
-            <p>{{ erro }}</p>
+            <p id="erro">{{ erro }}</p>
         {% endif %}
 
         {% if resultado %}
-            <p>{{ resultado }}</p>
+            <p id="resultado">{{ resultado }}</p>
         {% endif %}
 
         <!--
