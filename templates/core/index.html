@@ -1,23 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 <body>
-    <h1>Calculadora de SureBet</h1>
-
-    <h2>Escolha com quantos valores deseja calcular</h2>
-
-    <a href="{% url 'calc2_home' %}">
-        <button>Calculadora 2 valores</button>
-    </a>
-    <h1>a</h1>
-    <a href="{% url 'calc3_home' %}">
-        <button>Calculadora 3 valores</button>
-    </a>
+    <header>
+        <h1>Calculadora de SureBet</h1>
+    </header>
+    <main>
+        <h2>Escolha com quantos valores deseja calcular</h2>
+        <div class="botoes">
+            <a href="{% url 'calc2' %}" class="botao">Calculadora De 2 ODD</a>
+            <a href="{% url 'calc3' %}" class="botao">Calculadora De 3 ODD</a>
+        </div>
+    </main>
+    <footer>
+        <a href="https://github.com/Hkawzz/" id="github" target="_blank">GitHub</a>
+    </footer>
 </body>
 </html>

@@ -1,14 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="stylesheet" href="{% static 'calculadora_2valores/style.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora 2</title>
+    <title>Calculadora</title>
 </head>
 <body>
-    <h1>Calculadora 2 Dígitos</h1>
-    <a href="{% url 'inicio' %}">
-        <button>Inicio</button>
-    </a>
+    <header>
+        <h1>Calculadora De 2 Odd</h1>
+    </header>
+    <main>
+        <form method="post" class="formulario">
+            {% csrf_token %}
+            <input type="text" name="odd1" placeholder="Ex: 1,75">
+            <input type="text" name="odd2" placeholder="Ex: 2,10">
+            <button type="submit">Calcular</button>
+        </form>
+
+        {% if erro %}
+            <p>{{ erro }}</p>
+        {% endif %}
+
+        {% if resultado %}
+            <p>{{ resultado }}</p>
+        {% endif %}
+
+        <!--
+        {% if tem_surebet %}
+            <form method="post">
+                {% csrf_token %}
+                <h3>Quanto tem para apostar?</h3>
+                <input type="text" name="valor_total" placeholder="Valor total">
+                <button>Calcular</button>
+            </form>
+        {% endif %}
+        -->
+    </main>
+    <div class="inicio">
+        <a href="{% url 'inicio' %}" class="botao">INICIO</a>
+    </div>
+    <footer>
+        <a href="https://github.com/Hkawzz/" id="github" target="_blank">GitHub</a>
+    </footer>
 </body>
 </html>

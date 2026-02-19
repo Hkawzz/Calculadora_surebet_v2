@@ -21,6 +21,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.inicio, name='inicio'),
-    path('calc_2valores/', include('calculadora_2valores.urls')),
-    path('calc_3valores/', include('calculadora_3valores.urls')),
+    path('calc_2/', include('calculadora_2valores.urls')),
+    path('calc_3/', include('calculadora_3valores.urls')),
 ]
