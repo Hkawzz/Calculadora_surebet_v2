@@ -1,14 +1,68 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="stylesheet" href="{% static 'calculadora/style.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora 3</title>
+    <title>Calculadora</title>
 </head>
 <body>
-    <h1>Calculadora De 3 ODD</h1>
-    <a href="{% url 'inicio' %}">
-        <button>Inicio</button>
-    </a>
+    <header>
+        <h1>Calculadora De 3 Odd</h1>
+    </header>
+    <main>
+        <h2>Digite as ODD</h2>
+        <form method="post" class="formulario">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="odds">
+            <div>
+                <input type="text" name="odd1" placeholder="Ex: 1,75" class="info" required>
+                <input type="text" name="odd2" placeholder="Ex: 2,10" class="info" required>
+                <input type="text" name="odd3" placeholder="Ex: 2,10" class="info" required>
+            </div>
+            <div>
+                <button type="submit" class="calcular">Calcular</button>
+            </div>
+        </form>
+
+        {% if erro %}
+            <p id="erro">{{ erro }}</p>
+        {% endif %}
+
+        {% if resultado %}
+            <p id="resultado">{{ resultado }}</p>
+        {% endif %}
+
+        {% if tem_surebet %}
+            <h3>Quanto tem para apostar?</h3>
+            <form method="post" class="formulario_valor">
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="valor">
+                <input type="hidden" name="odd1" value="{{ odd1 }}">
+                <input type="hidden" name="odd2" value="{{ odd2 }}">
+                <input type="hidden" name="odd3" value="{{ odd3 }}">
+                <div>
+                    <input type="text" name="valor_total" placeholder="Valor total" class="info">
+                </div>
+                <div>
+                    <button class="calcular">Calcular</button>
+                </div>
+            </form>
+        {% endif %}
+        {% if apostar1 and apostar2 and apostar3 %}
+            <div class="valores">
+                <p>Aposte R$ {{ apostar1 }} na odd 1</p>
+                <p>Aposte R$ {{ apostar2 }} na odd 2</p>
+                <p>Aposte R$ {{ apostar2 }} na odd 2</p>
+            </div>
+        {% endif %}
+    </main>
+    <div class="inicio">
+        <a href="{% url 'inicio' %}" class="botao">INICIO</a>
+    </div>
+    <footer>
+        <a href="https://github.com/Hkawzz/" id="github" target="_blank">GitHub</a>
+    </footer>
 </body>
 </html>
